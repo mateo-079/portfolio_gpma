@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prince-Matéo Gounou — Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- Noise overlay -->
+  <div class="noise"></div>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-logo">PMG<span class="dot">.</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-status">
+        <span class="status-dot"></span>
+        <span>Disponible</span>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose" aria-label="Fermer">✕</button>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#projects" class="mobile-link">Work</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </div>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-text">DESIGN</div>
+    <div class="hero-content">
+      <div class="hero-tag reveal-up">Développeur &amp; Designer</div>
+      <h1 class="hero-title">
+        <span class="line reveal-up" data-delay="0.1">Prince-Matéo</span>
+        <span class="line italic reveal-up" data-delay="0.2">Gounou</span>
+      </h1>
+      <p class="hero-sub reveal-up" data-delay="0.35">
+        Je conçois des interfaces qui racontent<br />une histoire et laissent une trace.
+      </p>
+      <div class="hero-cta reveal-up" data-delay="0.45">
+        <a href="#projects" class="btn-primary">Voir mes projets</a>
+        <a href="#contact" class="btn-ghost">Me contacter</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+    <div class="hero-meta">
+      <span>Cotonou, Bénin</span>
+      <span class="sep">—</span>
+      <span>IA · Web · Design</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-label reveal-up">À propos</div>
+      <div class="about-grid">
+        <div class="about-left reveal-up">
+          <h2 class="section-title">Étudiant en <em>Intelligence<br />Artificielle</em>, passionné de<br />design &amp; code</h2>
+        </div>
+        <div class="about-right">
+          <p class="reveal-up" data-delay="0.1">
+            Actuellement en licence IA à l'IFRI (Abomey-Calavi), je développe des solutions
+            qui combinent esthétique et performance. Chaque projet est une opportunité
+            de repousser ce qui est possible.
+          </p>
+          <div class="skills-grid reveal-up" data-delay="0.2">
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-label">HTML · CSS · JS</span>
+                <span class="skill-pct">85%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-w="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-label">UI / Design</span>
+                <span class="skill-pct">80%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-w="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-label">Python</span>
+                <span class="skill-pct">72%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-w="72"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-label">Programmation C</span>
+                <span class="skill-pct">70%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-w="70"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-header">
+                <span class="skill-label">Intelligence Artificielle</span>
+                <span class="skill-pct">60%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" data-w="60"></div></div>
+            </div>
+          </div>
+          <div class="about-stats reveal-up" data-delay="0.3">
+            <div class="stat">
+              <span class="stat-num" data-target="3">0</span>
+              <span class="stat-label">Projets livrés</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-target="2">0</span>
+              <span class="stat-label">Ans d'expérience</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" data-target="5">0</span>
+              <span class="stat-label">Skills maîtrisés</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="section-label reveal-up">Réalisations</div>
+      <h2 class="section-title centered reveal-up">Mes <em>projets</em></h2>
+    </div>
+
+    <div class="projects-list">
+
+      <!-- Project 1 -->
+      <article class="project-card reveal-up" data-delay="0.05">
+        <a href="https://hifiverooftop.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+          <div class="project-number">01</div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span>Restauration</span>
+              <span>HTML/CSS/JS</span>
+              <span>UI Design</span>
+            </div>
+            <h3 class="project-title">Hi Five Rooftop</h3>
+            <p class="project-desc">
+              Site vitrine pour un restaurant rooftop panoramique à Cotonou.
+              Réservations en ligne, menu interactif, galerie et événements —
+              une expérience en hauteur retranscrite à l'écran.
+            </p>
+          </div>
+          <div class="project-preview">
+            <div class="project-screen">
+              <div class="screen-header">
+                <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+                <div class="screen-url">hifiverooftop.netlify.app</div>
+              </div>
+              <div class="screen-body hifive-preview">
+                <div class="prev-nav"></div>
+                <div class="prev-hero">
+                  <div class="prev-title">Hi Five Rooftop</div>
+                  <div class="prev-sub">Restaurant Panoramique · Cotonou</div>
+                  <div class="prev-btn"></div>
+                </div>
+                <div class="prev-cards">
+                  <div class="prev-card"></div>
+                  <div class="prev-card"></div>
+                  <div class="prev-card"></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card reveal-up" data-delay="0.1">
+        <a href="https://limprevucotonou.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+          <div class="project-number">02</div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span>Bistronomie</span>
+              <span>HTML/CSS/JS</span>
+              <span>Web Design</span>
+            </div>
+            <h3 class="project-title">L'Imprévu Cotonou</h3>
+            <p class="project-desc">
+              Site pour un restaurant bistronomique au quartier Ganhi.
+              Ambiance cosy et boisée traduite en digital — menu, galerie,
+              formulaire de réservation et événements hebdomadaires.
+            </p>
+          </div>
+          <div class="project-preview">
+            <div class="project-screen">
+              <div class="screen-header">
+                <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+                <div class="screen-url">limprevucotonou.netlify.app</div>
+              </div>
+              <div class="screen-body imprevu-preview">
+                <div class="prev-nav"></div>
+                <div class="prev-hero">
+                  <div class="prev-title">L'Imprévu</div>
+                  <div class="prev-sub">Bistronomie · Ganhi</div>
+                  <div class="prev-btn"></div>
+                </div>
+                <div class="prev-cards">
+                  <div class="prev-card"></div>
+                  <div class="prev-card"></div>
+                  <div class="prev-card"></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card reveal-up" data-delay="0.15">
+        <a href="https://gpma.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+          <div class="project-number">03</div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span>Page personnelle</span>
+              <span>HTML/CSS/JS</span>
+              <span>Animation</span>
+            </div>
+            <h3 class="project-title">Joyeux Anniversaire Papa</h3>
+            <p class="project-desc">
+              Page d'anniversaire interactive et animée créée pour les 51 ans
+              d'un père. Un projet personnel qui démontre la capacité à
+              transformer une émotion en expérience digitale mémorable.
+            </p>
+          </div>
+          <div class="project-preview">
+            <div class="project-screen">
+              <div class="screen-header">
+                <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+                <div class="screen-url">gpma.netlify.app</div>
+              </div>
+              <div class="screen-body gpma-preview">
+                <div class="prev-nav"></div>
+                <div class="prev-hero">
+                  <div class="prev-title">Bonjour Papa</div>
+                  <div class="prev-sub">51 ans ✨</div>
+                  <div class="prev-btn"></div>
+                </div>
+                <div class="prev-cards">
+                  <div class="prev-card"></div>
+                  <div class="prev-card"></div>
+                  <div class="prev-card"></div>
+                </div>
+              </div>
+            </div>
+            <div class="project-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-label reveal-up">Contact</div>
+      <div class="contact-grid">
+        <div class="contact-left reveal-up">
+          <h2 class="section-title">Travaillons<br /><em>ensemble</em></h2>
+          <p>Un projet en tête ? Une idée à concrétiser ?<br />Je suis disponible pour collaborer.</p>
+          <div class="contact-links">
+            <a href="mailto:princemateog@gmail.com" class="contact-link">
+              <span class="cl-icon">✉</span>
+              <span>princemateog@gmail.com</span>
+            </a>
+            <a href="tel:+2290199135383" class="contact-link">
+              <span class="cl-icon">☎</span>
+              <span>+229 01 99 13 53 83</span>
+            </a>
+            <div class="contact-link no-link">
+              <span class="cl-icon">📍</span>
+              <span>Abomey-Calavi, Bénin</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-right reveal-up" data-delay="0.2">
+          <div class="contact-card">
+            <div class="cc-tag">Let's talk</div>
+            <div class="cc-big">Prince-Matéo<br />Gounou</div>
+            <div class="cc-role">Dev &amp; Designer · Cotonou</div>
+            <a href="mailto:princemateog@gmail.com" class="btn-primary">Envoyer un message</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">PMG<span class="dot">.</span></span>
+      <span class="footer-copy">© 2026 Prince-Matéo Gounou. Tous droits réservés.</span>
+      <span class="footer-made">Made with <span class="heart">♥</span> &amp; code</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
