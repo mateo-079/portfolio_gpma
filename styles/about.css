@@ -1,0 +1,131 @@
+/* ===========================
+   about.css — Section À propos
+   =========================== */
+
+@layer sections {
+  .about {
+    padding: var(--space-2xl) 0;
+    position: relative;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 700px;
+  }
+
+  .about::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+    margin-top: var(--space-lg);
+  }
+
+  .about-right p {
+    color: var(--text-dim);
+    font-size: 1rem;
+    line-height: 1.9;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 48px;
+  }
+
+  .skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .skill-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .skill-pct {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .skill-bar {
+    height: 2px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--accent), rgba(200,255,0,0.45));
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.4s var(--ease-out);
+  }
+
+  /* ── STATS ── */
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat { display: flex; flex-direction: column; gap: 4px; }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 3.2rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .about-grid { grid-template-columns: 1fr; gap: 56px; }
+  }
+
+  @media (max-width: 768px) {
+    .about { padding: 100px 0; }
+    .about-stats { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .about-stats { grid-template-columns: repeat(2, 1fr); }
+  }
+}
+
+  /* Espacement entre "Artificielle," et "passionné" */
+  .title-gap {
+    display: inline-block;
+    margin-top: 0.18em;
+  }

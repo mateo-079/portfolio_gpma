@@ -1,0 +1,270 @@
+/* ===========================
+   nav.css — Navigation principale & menu mobile
+   =========================== */
+
+@layer sections {
+
+  /* ── BARRE DE PROGRESSION ── */
+  .read-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(to right, var(--accent), var(--accent2));
+    z-index: 999;
+    pointer-events: none;
+    transition: width 0.1s linear;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-lg);
+    height: var(--nav-h);
+    transition: background 0.4s, backdrop-filter 0.4s, height 0.4s, border-color 0.4s;
+    border-bottom: 1px solid transparent;
+  }
+
+  .nav.scrolled {
+    background: rgba(8,8,8,0.88);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    height: 64px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .dot { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.35s var(--ease-out);
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--accent); }
+
+  .nav-links a:hover::after,
+  .nav-links a.active::after { width: 100%; }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nav-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  .status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #44ff77;
+    flex-shrink: 0;
+    animation: pulse-dot 2s ease infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(68,255,119,0.5); }
+    50%       { box-shadow: 0 0 0 5px rgba(68,255,119,0); }
+  }
+
+  /* ── BOUTON CV NAV ── */
+  .btn-cv {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #080808;
+    background: var(--accent);
+    padding: 7px 14px;
+    border-radius: 2px;
+    cursor: none;
+    transition: box-shadow 0.3s var(--ease-out), transform 0.2s var(--ease-out);
+  }
+
+  .btn-cv svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+    transition: transform 0.3s var(--ease-out);
+  }
+
+  .btn-cv:hover {
+    box-shadow: 0 0 24px rgba(200, 255, 0, 0.35);
+    transform: translateY(-1px);
+  }
+
+  .btn-cv:hover svg {
+    transform: translateY(2px);
+  }
+
+  /* Cacher le texte "CV" sur mobile, garder l'icône */
+  @media (max-width: 560px) {
+    .btn-cv span { display: none; }
+    .btn-cv { padding: 7px 10px; }
+  }
+
+  /* ── HAMBURGER ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: none;
+    padding: 8px;
+    transition: border-color 0.3s;
+  }
+
+  .hamburger:hover { border-color: rgba(255,255,255,0.2); }
+
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: var(--text-dim);
+    transition: transform 0.3s, opacity 0.3s, background 0.3s;
+    transform-origin: center;
+  }
+
+  .hamburger.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); background: var(--accent); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); background: var(--accent); }
+
+  /* ── MOBILE MENU ── */
+  .mobile-menu {
+    position: fixed;
+    top: 0; right: -100%;
+    width: min(320px, 85vw);
+    height: 100vh;
+    background: #0c0c0c;
+    border-left: 1px solid var(--border);
+    z-index: 300;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    padding: 60px 40px;
+    transition: right 0.45s var(--ease-out);
+  }
+
+  .mobile-menu.open { right: 0; }
+
+  .mobile-close {
+    position: absolute;
+    top: 24px; right: 24px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    cursor: none;
+    transition: color 0.3s, border-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-close:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+
+  .mobile-link {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.3s, transform 0.3s;
+    display: block;
+    line-height: 1.1;
+  }
+
+  .mobile-link:hover { color: var(--accent); transform: translateX(8px); }
+
+  .mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 250;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s;
+    backdrop-filter: blur(4px);
+  }
+
+  .mobile-overlay.open { opacity: 1; pointer-events: all; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .hamburger { display: flex; }
+    .nav-links  { display: none; }
+  }
+
+  @media (max-width: 768px) {
+    .nav { padding: 0 24px; }
+    .mobile-link { font-size: 2.2rem; }
+  }
+}
+
+  /* ── CV dans mobile menu ── */
+  .mobile-link--cv {
+    font-size: 1.8rem;
+    color: var(--accent) !important;
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }

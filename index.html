@@ -3,23 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <meta name="description" content="Portfolio de Prince-Matéo Gounou — Développeur & Designer UI/UX basé à Cotonou, Bénin. Spécialisé en HTML/CSS/JS, Python et Intelligence Artificielle." />
+  <meta name="author" content="Prince-Matéo Gounou" />
+  <meta name="keywords" content="portfolio, développeur, designer, UI, web, IA, Bénin, Cotonou" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://pmg-portfolio.netlify.app/" />
+  <meta property="og:title"       content="Prince-Matéo Gounou — Développeur & Designer" />
+  <meta property="og:description" content="Je conçois des interfaces qui racontent une histoire et laissent une trace." />
+  <meta property="og:image"       content="https://pmg-portfolio.netlify.app/assets/og-image.jpg" />
+  <meta property="og:locale"      content="fr_FR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Prince-Matéo Gounou — Développeur & Designer" />
+  <meta name="twitter:description" content="Je conçois des interfaces qui racontent une histoire et laissent une trace." />
+  <meta name="twitter:image"       content="https://pmg-portfolio.netlify.app/assets/og-image.jpg" />
+
   <title>Prince-Matéo Gounou — Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon"   href="assets/favicon.ico" />
+  <link rel="icon" type="image/svg+xml"  href="assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components/cursor.css" />
+  <link rel="stylesheet" href="styles/components/buttons.css" />
+  <link rel="stylesheet" href="styles/components/reveal.css" />
+  <link rel="stylesheet" href="styles/nav.css" />
+  <link rel="stylesheet" href="styles/hero.css" />
+  <link rel="stylesheet" href="styles/about.css" />
+  <link rel="stylesheet" href="styles/projects.css" />
+  <link rel="stylesheet" href="styles/contact.css" />
+  <link rel="stylesheet" href="styles/footer.css" />
 </head>
 <body>
 
+  <!-- Barre de progression de lecture -->
+  <div class="read-progress" id="readProgress" aria-hidden="true"></div>
+
   <!-- Custom cursor -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-trail" id="cursorTrail"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-trail" id="cursorTrail" aria-hidden="true"></div>
 
   <!-- Noise overlay -->
-  <div class="noise"></div>
+  <div class="noise" aria-hidden="true"></div>
 
   <!-- NAV -->
-  <nav class="nav" id="nav">
+  <nav class="nav" id="nav" aria-label="Navigation principale">
     <div class="nav-logo">PMG<span class="dot">.</span></div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
@@ -27,31 +69,38 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <div class="nav-status">
+      <div class="nav-status" aria-label="Statut : disponible">
         <span class="status-dot"></span>
         <span>Disponible</span>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu">
+      <a href="assets/CV_Prince-Mateo_Gounou_2026.pdf" download class="btn-cv" aria-label="Télécharger mon CV">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M12 3v13M7 11l5 5 5-5M4 20h16"/>
+        </svg>
+        <span>CV</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- Mobile menu overlay -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-close" id="mobileClose" aria-label="Fermer">✕</button>
-    <a href="#about" class="mobile-link">About</a>
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu de navigation">
+    <button class="mobile-close" id="mobileClose" aria-label="Fermer le menu">✕</button>
+    <a href="#about"   class="mobile-link">About</a>
     <a href="#projects" class="mobile-link">Work</a>
     <a href="#contact" class="mobile-link">Contact</a>
+    <a href="assets/CV_Prince-Mateo_Gounou_2026.pdf" download class="mobile-link mobile-link--cv">CV ↓</a>
   </div>
-  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
 
   <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-bg-text">DESIGN</div>
+  <section class="hero" id="hero" aria-labelledby="hero-title">
+    <div class="hero-bg-text" aria-hidden="true">DESIGN</div>
     <div class="hero-content">
-      <div class="hero-tag reveal-up">Développeur &amp; Designer</div>
-      <h1 class="hero-title">
+      <p class="hero-tag reveal-up">Développeur &amp; Designer</p>
+      <h1 class="hero-title" id="hero-title">
         <span class="line reveal-up" data-delay="0.1">Prince-Matéo</span>
         <span class="line italic reveal-up" data-delay="0.2">Gounou</span>
       </h1>
@@ -60,14 +109,20 @@
       </p>
       <div class="hero-cta reveal-up" data-delay="0.45">
         <a href="#projects" class="btn-primary">Voir mes projets</a>
-        <a href="#contact" class="btn-ghost">Me contacter</a>
+        <a href="#contact"  class="btn-ghost">Me contacter</a>
+        <a href="assets/CV_Prince-Mateo_Gounou_2026.pdf" download class="btn-cv-hero" aria-label="Télécharger mon CV">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M12 3v13M7 11l5 5 5-5M4 20h16"/>
+          </svg>
+          Télécharger mon CV
+        </a>
       </div>
     </div>
-    <div class="hero-scroll">
+    <div class="hero-scroll" aria-hidden="true">
       <div class="scroll-line"></div>
       <span>Scroll</span>
     </div>
-    <div class="hero-meta">
+    <div class="hero-meta" aria-hidden="true">
       <span>Cotonou, Bénin</span>
       <span class="sep">—</span>
       <span>IA · Web · Design</span>
@@ -75,12 +130,12 @@
   </section>
 
   <!-- ABOUT -->
-  <section class="about" id="about">
+  <section class="about" id="about" aria-labelledby="about-title">
     <div class="container">
       <div class="section-label reveal-up">À propos</div>
       <div class="about-grid">
         <div class="about-left reveal-up">
-          <h2 class="section-title">Étudiant en <em>Intelligence<br />Artificielle</em>, passionné de<br />design &amp; code</h2>
+          <h2 class="section-title" id="about-title">Étudiant en <em>Intelligence<br />Artificielle</em>,<br /><span class="title-gap">passionné de<br />design &amp; code</span></h2>
         </div>
         <div class="about-right">
           <p class="reveal-up" data-delay="0.1">
@@ -88,46 +143,56 @@
             qui combinent esthétique et performance. Chaque projet est une opportunité
             de repousser ce qui est possible.
           </p>
-          <div class="skills-grid reveal-up" data-delay="0.2">
+          <div class="skills-grid reveal-up" data-delay="0.2" aria-label="Compétences techniques">
             <div class="skill-item">
               <div class="skill-header">
                 <span class="skill-label">HTML · CSS · JS</span>
-                <span class="skill-pct">85%</span>
+                <span class="skill-pct" aria-hidden="true">85%</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-w="85"></div></div>
+              <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="HTML CSS JS : 85%">
+                <div class="skill-fill" data-w="85"></div>
+              </div>
             </div>
             <div class="skill-item">
               <div class="skill-header">
                 <span class="skill-label">UI / Design</span>
-                <span class="skill-pct">80%</span>
+                <span class="skill-pct" aria-hidden="true">80%</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-w="80"></div></div>
+              <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="UI Design : 80%">
+                <div class="skill-fill" data-w="80"></div>
+              </div>
             </div>
             <div class="skill-item">
               <div class="skill-header">
                 <span class="skill-label">Python</span>
-                <span class="skill-pct">72%</span>
+                <span class="skill-pct" aria-hidden="true">72%</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-w="72"></div></div>
+              <div class="skill-bar" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" aria-label="Python : 72%">
+                <div class="skill-fill" data-w="72"></div>
+              </div>
             </div>
             <div class="skill-item">
               <div class="skill-header">
                 <span class="skill-label">Programmation C</span>
-                <span class="skill-pct">70%</span>
+                <span class="skill-pct" aria-hidden="true">70%</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-w="70"></div></div>
+              <div class="skill-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" aria-label="Programmation C : 70%">
+                <div class="skill-fill" data-w="70"></div>
+              </div>
             </div>
             <div class="skill-item">
               <div class="skill-header">
                 <span class="skill-label">Intelligence Artificielle</span>
-                <span class="skill-pct">60%</span>
+                <span class="skill-pct" aria-hidden="true">60%</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-w="60"></div></div>
+              <div class="skill-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Intelligence Artificielle : 60%">
+                <div class="skill-fill" data-w="60"></div>
+              </div>
             </div>
           </div>
           <div class="about-stats reveal-up" data-delay="0.3">
             <div class="stat">
-              <span class="stat-num" data-target="3">0</span>
+              <span class="stat-num" data-target="4">0</span>
               <span class="stat-label">Projets livrés</span>
             </div>
             <div class="stat">
@@ -145,124 +210,127 @@
   </section>
 
   <!-- PROJECTS -->
-  <section class="projects" id="projects">
+  <section class="projects" id="projects" aria-labelledby="projects-title">
     <div class="container">
       <div class="section-label reveal-up">Réalisations</div>
-      <h2 class="section-title centered reveal-up">Mes <em>projets</em></h2>
+      <h2 class="section-title centered reveal-up" id="projects-title">Mes <em>projets</em></h2>
     </div>
-
     <div class="projects-list">
 
-      <!-- Project 1 -->
-      <article class="project-card reveal-up" data-delay="0.05">
-        <a href="https://hifiverooftop.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">
-          <div class="project-number">01</div>
+      <article class="project-card reveal-up" data-delay="0.05" aria-label="Projet Luxeora Fashion House">
+        <a href="https://luxeora-fashion-house.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+          <div class="project-number" aria-hidden="true">01</div>
           <div class="project-info">
             <div class="project-tags">
-              <span>Restauration</span>
-              <span>HTML/CSS/JS</span>
-              <span>UI Design</span>
+              <span>Mode & Luxe</span><span>HTML/CSS/JS</span><span>UI Design</span>
+              <span class="project-year">2026</span>
             </div>
-            <h3 class="project-title">Hi Five Rooftop</h3>
-            <p class="project-desc">
-              Site vitrine pour un restaurant rooftop panoramique à Cotonou.
-              Réservations en ligne, menu interactif, galerie et événements —
-              une expérience en hauteur retranscrite à l'écran.
-            </p>
+            <h3 class="project-title">Luxeora Fashion House</h3>
+            <p class="project-desc">Site vitrine pour une maison de mode haute couture. Collections Harmattan 2026, catalogue produits interactif, espace promotions — l'élégance intemporelle traduite en digital.</p>
           </div>
-          <div class="project-preview">
+          <div class="project-preview" aria-hidden="true">
             <div class="project-screen">
               <div class="screen-header">
                 <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
-                <div class="screen-url">hifiverooftop.netlify.app</div>
+                <div class="screen-url">luxeora-fashion-house.netlify.app</div>
               </div>
-              <div class="screen-body hifive-preview">
+              <div class="screen-body luxeora-preview">
                 <div class="prev-nav"></div>
                 <div class="prev-hero">
-                  <div class="prev-title">Hi Five Rooftop</div>
-                  <div class="prev-sub">Restaurant Panoramique · Cotonou</div>
+                  <div class="prev-title">LUXEORA</div>
+                  <div class="prev-sub">Fashion House · Haute Couture</div>
                   <div class="prev-btn"></div>
                 </div>
-                <div class="prev-cards">
-                  <div class="prev-card"></div>
-                  <div class="prev-card"></div>
-                  <div class="prev-card"></div>
-                </div>
+                <div class="prev-cards"><div class="prev-card"></div><div class="prev-card"></div><div class="prev-card"></div></div>
               </div>
             </div>
             <div class="project-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M7 17L17 7M17 7H7M17 7v10"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
             </div>
           </div>
         </a>
       </article>
 
-      <!-- Project 2 -->
-      <article class="project-card reveal-up" data-delay="0.1">
-        <a href="https://limprevucotonou.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">
-          <div class="project-number">02</div>
+      <article class="project-card reveal-up" data-delay="0.1" aria-label="Projet NexaLab">
+        <a href="https://nexalab-tech-innov.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+          <div class="project-number" aria-hidden="true">02</div>
           <div class="project-info">
             <div class="project-tags">
-              <span>Bistronomie</span>
-              <span>HTML/CSS/JS</span>
-              <span>Web Design</span>
+              <span>Tech & IA</span><span>HTML/CSS/JS</span><span>Web Design</span>
+              <span class="project-year">2026</span>
             </div>
-            <h3 class="project-title">L'Imprévu Cotonou</h3>
-            <p class="project-desc">
-              Site pour un restaurant bistronomique au quartier Ganhi.
-              Ambiance cosy et boisée traduite en digital — menu, galerie,
-              formulaire de réservation et événements hebdomadaires.
-            </p>
+            <h3 class="project-title">NexaLab</h3>
+            <p class="project-desc">Site vitrine pour un laboratoire d'innovation technologique africain. Présentation des expertises IA, IoT et Data — une identité tech forte au service des entreprises du continent.</p>
           </div>
-          <div class="project-preview">
+          <div class="project-preview" aria-hidden="true">
             <div class="project-screen">
               <div class="screen-header">
                 <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
-                <div class="screen-url">limprevucotonou.netlify.app</div>
+                <div class="screen-url">nexalab-tech-innov.netlify.app</div>
               </div>
-              <div class="screen-body imprevu-preview">
+              <div class="screen-body nexalab-preview">
                 <div class="prev-nav"></div>
                 <div class="prev-hero">
-                  <div class="prev-title">L'Imprévu</div>
-                  <div class="prev-sub">Bistronomie · Ganhi</div>
+                  <div class="prev-title">NexaLab</div>
+                  <div class="prev-sub">Innovation Technologique · Afrique</div>
                   <div class="prev-btn"></div>
                 </div>
-                <div class="prev-cards">
-                  <div class="prev-card"></div>
-                  <div class="prev-card"></div>
-                  <div class="prev-card"></div>
-                </div>
+                <div class="prev-cards"><div class="prev-card"></div><div class="prev-card"></div><div class="prev-card"></div></div>
               </div>
             </div>
             <div class="project-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M7 17L17 7M17 7H7M17 7v10"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
             </div>
           </div>
         </a>
       </article>
 
-      <!-- Project 3 -->
-      <article class="project-card reveal-up" data-delay="0.15">
+      <article class="project-card reveal-up" data-delay="0.15" aria-label="Projet Face À La Mer">
+        <a href="https://facealamer.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">
+          <div class="project-number" aria-hidden="true">03</div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span>Beach Club</span><span>HTML/CSS/JS</span><span>UI Design</span>
+              <span class="project-year">2026</span>
+            </div>
+            <h3 class="project-title">Face À La Mer</h3>
+            <p class="project-desc">Site pour un beach club & restaurant à Fidjrossè, Cotonou. Grillades, fruits de mer, cocktails face à l'Atlantique — l'ambiance balnéaire capturée en expérience digitale immersive.</p>
+          </div>
+          <div class="project-preview" aria-hidden="true">
+            <div class="project-screen">
+              <div class="screen-header">
+                <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+                <div class="screen-url">facealamer.netlify.app</div>
+              </div>
+              <div class="screen-body fam-preview">
+                <div class="prev-nav"></div>
+                <div class="prev-hero">
+                  <div class="prev-title">Face À La Mer</div>
+                  <div class="prev-sub">Beach Club · Fidjrossè</div>
+                  <div class="prev-btn"></div>
+                </div>
+                <div class="prev-cards"><div class="prev-card"></div><div class="prev-card"></div><div class="prev-card"></div></div>
+              </div>
+            </div>
+            <div class="project-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </div>
+          </div>
+        </a>
+      </article>
+
+      <article class="project-card reveal-up" data-delay="0.2" aria-label="Projet Joyeux Anniversaire Papa">
         <a href="https://gpma.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">
-          <div class="project-number">03</div>
+          <div class="project-number" aria-hidden="true">04</div>
           <div class="project-info">
             <div class="project-tags">
-              <span>Page personnelle</span>
-              <span>HTML/CSS/JS</span>
-              <span>Animation</span>
+              <span>Page personnelle</span><span>HTML/CSS/JS</span><span>Animation</span>
+              <span class="project-year">2025</span>
             </div>
             <h3 class="project-title">Joyeux Anniversaire Papa</h3>
-            <p class="project-desc">
-              Page d'anniversaire interactive et animée créée pour les 51 ans
-              d'un père. Un projet personnel qui démontre la capacité à
-              transformer une émotion en expérience digitale mémorable.
-            </p>
+            <p class="project-desc">Page d'anniversaire interactive et animée créée pour les 51 ans d'un père. Un projet personnel qui démontre la capacité à transformer une émotion en expérience digitale mémorable.</p>
           </div>
-          <div class="project-preview">
+          <div class="project-preview" aria-hidden="true">
             <div class="project-screen">
               <div class="screen-header">
                 <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
@@ -275,17 +343,11 @@
                   <div class="prev-sub">51 ans ✨</div>
                   <div class="prev-btn"></div>
                 </div>
-                <div class="prev-cards">
-                  <div class="prev-card"></div>
-                  <div class="prev-card"></div>
-                  <div class="prev-card"></div>
-                </div>
+                <div class="prev-cards"><div class="prev-card"></div><div class="prev-card"></div><div class="prev-card"></div></div>
               </div>
             </div>
             <div class="project-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M7 17L17 7M17 7H7M17 7v10"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
             </div>
           </div>
         </a>
@@ -295,33 +357,47 @@
   </section>
 
   <!-- CONTACT -->
-  <section class="contact" id="contact">
+  <section class="contact" id="contact" aria-labelledby="contact-title">
     <div class="container">
       <div class="section-label reveal-up">Contact</div>
       <div class="contact-grid">
         <div class="contact-left reveal-up">
-          <h2 class="section-title">Travaillons<br /><em>ensemble</em></h2>
+          <h2 class="section-title" id="contact-title">Travaillons<br /><em>ensemble</em></h2>
           <p>Un projet en tête ? Une idée à concrétiser ?<br />Je suis disponible pour collaborer.</p>
-          <div class="contact-links">
+          <address class="contact-links">
             <a href="mailto:princemateog@gmail.com" class="contact-link">
-              <span class="cl-icon">✉</span>
+              <span class="cl-icon" aria-hidden="true">✉</span>
               <span>princemateog@gmail.com</span>
             </a>
             <a href="tel:+2290199135383" class="contact-link">
-              <span class="cl-icon">☎</span>
+              <span class="cl-icon" aria-hidden="true">☎</span>
               <span>+229 01 99 13 53 83</span>
             </a>
             <div class="contact-link no-link">
-              <span class="cl-icon">📍</span>
+              <span class="cl-icon" aria-hidden="true">📍</span>
               <span>Abomey-Calavi, Bénin</span>
             </div>
-          </div>
+          </address>
         </div>
         <div class="contact-right reveal-up" data-delay="0.2">
           <div class="contact-card">
             <div class="cc-tag">Let's talk</div>
             <div class="cc-big">Prince-Matéo<br />Gounou</div>
             <div class="cc-role">Dev &amp; Designer · Cotonou</div>
+            <!-- Liens sociaux -->
+            <div class="cc-socials">
+              <a href="https://github.com/mateo-079" target="_blank" rel="noopener noreferrer" class="cc-social" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/prince-mateo-gounou" target="_blank" rel="noopener noreferrer" class="cc-social" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+            </div>
+            <!-- Disponibilité -->
+            <div class="cc-availability">
+              <span class="cc-avail-dot"></span>
+              <span>Disponible pour nouvelles missions — 2026</span>
+            </div>
             <a href="mailto:princemateog@gmail.com" class="btn-primary">Envoyer un message</a>
           </div>
         </div>
@@ -334,10 +410,19 @@
     <div class="container footer-inner">
       <span class="footer-logo">PMG<span class="dot">.</span></span>
       <span class="footer-copy">© 2026 Prince-Matéo Gounou. Tous droits réservés.</span>
-      <span class="footer-made">Made with <span class="heart">♥</span> &amp; code</span>
+      <span class="footer-made">Made with <span class="heart" aria-hidden="true">♥</span> &amp; code</span>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Scripts -->
+  <script src="js/cursor.js"    defer></script>
+  <script src="js/nav.js"       defer></script>
+  <script src="js/hero.js"      defer></script>
+  <script src="js/reveal.js"    defer></script>
+  <script src="js/skills.js"    defer></script>
+  <script src="js/counter.js"   defer></script>
+  <script src="js/projects.js"  defer></script>
+  <script src="js/scroll.js"    defer></script>
+  <script src="js/progress.js"  defer></script>
 </body>
 </html>

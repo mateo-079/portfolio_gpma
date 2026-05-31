@@ -1,0 +1,48 @@
+/* ===========================
+   reveal.css — Animations de scroll
+   Utilise les Scroll-driven Animations CSS (2024-2026)
+   avec fallback IntersectionObserver pour les vieux browsers
+   =========================== */
+
+@layer components {
+
+  /* ── Fallback : JS-driven (tous navigateurs) ── */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.85s var(--ease-out),
+                transform 0.85s var(--ease-out);
+  }
+
+  .reveal-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Scroll-driven natif (Chrome 115+, Edge 115+, Firefox 132+) ── */
+  @supports (animation-timeline: view()) {
+    .reveal-up {
+      /* On écrase la transition JS par une animation CSS native */
+      animation: reveal-anim linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 28%;
+
+      /* Pas besoin de .visible en JS quand le browser supporte */
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    /* Le JS ajoute quand même .visible mais ça ne casse rien */
+    @keyframes reveal-anim {
+      from {
+        opacity: 0;
+        transform: translateY(36px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}

@@ -1,0 +1,179 @@
+/* ===========================
+   contact.css — Section Contact
+   =========================== */
+
+@layer sections {
+  .contact {
+    padding: var(--space-2xl) 0;
+    position: relative;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px;
+  }
+
+  .contact::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+    margin-top: 52px;
+  }
+
+  .contact-left p {
+    color: var(--text-dim);
+    margin: 28px 0 40px;
+    font-size: 1rem;
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  .contact-links { display: flex; flex-direction: column; }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    transition: color 0.3s, padding-left 0.3s;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .contact-link:hover { color: var(--accent); padding-left: 6px; }
+  .contact-link.no-link { cursor: default; }
+  .contact-link.no-link:hover { color: var(--text-dim); padding-left: 0; }
+
+  .cl-icon { font-size: 0.85rem; width: 22px; text-align: center; flex-shrink: 0; }
+
+  /* ── CONTACT CARD ── */
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 52px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent), var(--accent2));
+  }
+
+  .contact-card::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; right: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(200,255,0,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cc-tag {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--accent);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .cc-big {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 2.6rem;
+    line-height: 1.05;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  .cc-role {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+
+  /* ── LIENS SOCIAUX ── */
+  .cc-socials {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .cc-social {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s, border-color 0.3s, transform 0.2s var(--ease-out);
+    cursor: none;
+  }
+
+  .cc-social svg { width: 16px; height: 16px; }
+
+  .cc-social:hover {
+    color: var(--accent);
+    border-color: rgba(200, 255, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* ── DISPONIBILITÉ ── */
+  .cc-availability {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+    padding: 10px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cc-avail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #44ff77;
+    flex-shrink: 0;
+    animation: pulse-dot 2s ease infinite;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 56px; }
+  }
+
+  @media (max-width: 768px) {
+    .contact { padding: 100px 0; }
+  }
+
+  @media (max-width: 560px) {
+    .contact-card { padding: 36px 28px; }
+    .contact-grid { gap: 40px; }
+  }
+}

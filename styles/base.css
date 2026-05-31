@@ -1,0 +1,134 @@
+/* ===========================
+   base.css — Reset · Variables · Typographie · Utilitaires globaux
+   =========================== */
+
+@layer reset, base, components, sections, utilities;
+
+/* ── RESET ── */
+@layer reset {
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+}
+
+/* ── VARIABLES & TOKENS ── */
+@layer base {
+  :root {
+    --bg:           #080808;
+    --bg2:          #0e0e0e;
+    --surface:      #141414;
+    --border:       rgba(255,255,255,0.07);
+    --accent:       #c8ff00;
+    --accent2:      #ff6b35;
+    --text:         #f0f0f0;
+    --text-muted:   #666;
+    --text-dim:     #999;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-serif:   'DM Serif Display', serif;
+    --font-mono:    'JetBrains Mono', monospace;
+    --font-body:    'Inter', sans-serif;
+    --nav-h:        80px;
+
+    /* Spacing tokens */
+    --space-xs:  8px;
+    --space-sm:  16px;
+    --space-md:  32px;
+    --space-lg:  48px;
+    --space-xl:  80px;
+    --space-2xl: 140px;
+
+    /* Easing tokens */
+    --ease-out:    cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    cursor: none;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  .noise {
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    pointer-events: none;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+
+  /* ── CONTAINER ── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+
+  /* ── SECTION LABELS & TITLES ── */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  .section-title em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  .section-title.centered { text-align: center; }
+}
+
+/* ── REDUCED MOTION — Accessibilité obligatoire ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .cursor, .cursor-trail, .hero-bg-text, .scroll-line { display: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ── TOUCH DEVICES ── */
+@media (hover: none) {
+  .cursor, .cursor-trail { display: none; }
+  html { cursor: auto; }
+  a, button { cursor: pointer; }
+}

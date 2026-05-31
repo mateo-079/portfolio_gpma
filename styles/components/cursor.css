@@ -1,0 +1,39 @@
+/* ===========================
+   cursor.css — Custom cursor & trail
+   =========================== */
+
+@layer components {
+  .cursor {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 9999;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, background 0.3s;
+    mix-blend-mode: difference;
+    will-change: left, top;
+  }
+
+  .cursor.hovering {
+    width: 20px;
+    height: 20px;
+  }
+
+  .cursor-trail {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(200, 255, 0, 0.35);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 9998;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    will-change: left, top;
+    transition: width 0.3s, height 0.3s, opacity 0.3s;
+  }
+}
