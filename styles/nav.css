@@ -1,29 +1,21 @@
-/* ===========================
-   nav.css — Navigation principale & menu mobile
-   =========================== */
+/* nav.css — Navigation + mobile menu + theme toggle */
 
 @layer sections {
 
   /* ── BARRE DE PROGRESSION ── */
   .read-progress {
-    position: fixed;
-    top: 0; left: 0;
-    height: 2px;
-    width: 0%;
+    position: fixed; top: 0; left: 0;
+    height: 2px; width: 0%;
     background: linear-gradient(to right, var(--accent), var(--accent2));
-    z-index: 999;
-    pointer-events: none;
+    z-index: 999; pointer-events: none;
     transition: width 0.1s linear;
   }
 
   /* ── NAV ── */
   .nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
+    position: fixed; top: 0; left: 0; right: 0;
     z-index: 200;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between;
     padding: 0 var(--space-lg);
     height: var(--nav-h);
     transition: background 0.4s, backdrop-filter 0.4s, height 0.4s, border-color 0.4s;
@@ -38,21 +30,22 @@
     border-bottom: 1px solid var(--border);
   }
 
+  [data-theme="light"] .nav.scrolled {
+    background: rgba(238,244,255,0.92);
+  }
+
   .nav-logo {
     font-family: var(--font-display);
     font-size: 1.5rem;
     letter-spacing: 0.05em;
     color: var(--text);
     text-decoration: none;
+    cursor: none;
   }
 
   .dot { color: var(--accent); }
 
-  .nav-links {
-    display: flex;
-    gap: 40px;
-    list-style: none;
-  }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
 
   .nav-links a {
     font-family: var(--font-mono);
@@ -64,14 +57,13 @@
     transition: color 0.3s;
     position: relative;
     padding-bottom: 4px;
+    cursor: none;
   }
 
   .nav-links a::after {
     content: '';
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 0;
-    height: 1px;
+    position: absolute; bottom: 0; left: 0;
+    width: 0; height: 1px;
     background: var(--accent);
     transition: width 0.35s var(--ease-out);
   }
@@ -82,16 +74,10 @@
   .nav-links a:hover::after,
   .nav-links a.active::after { width: 100%; }
 
-  .nav-right {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
 
   .nav-status {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display: flex; align-items: center; gap: 8px;
     font-family: var(--font-mono);
     font-size: 0.68rem;
     color: var(--text-muted);
@@ -99,10 +85,8 @@
   }
 
   .status-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #44ff77;
+    width: 7px; height: 7px;
+    border-radius: 50%; background: #44ff77;
     flex-shrink: 0;
     animation: pulse-dot 2s ease infinite;
   }
@@ -112,72 +96,69 @@
     50%       { box-shadow: 0 0 0 5px rgba(68,255,119,0); }
   }
 
-  /* ── BOUTON CV NAV ── */
+  /* ── BOUTON CV ── */
   .btn-cv {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+    display: inline-flex; align-items: center; gap: 6px;
     font-family: var(--font-mono);
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
     text-decoration: none;
     color: #080808;
     background: var(--accent);
-    padding: 7px 14px;
-    border-radius: 2px;
-    cursor: none;
+    padding: 7px 14px; border-radius: 2px;
+    cursor: pointer;
     transition: box-shadow 0.3s var(--ease-out), transform 0.2s var(--ease-out);
   }
 
-  .btn-cv svg {
-    width: 13px;
-    height: 13px;
-    flex-shrink: 0;
-    transition: transform 0.3s var(--ease-out);
+  .btn-cv svg { width: 13px; height: 13px; flex-shrink: 0; transition: transform 0.3s var(--ease-out); }
+  .btn-cv:hover { box-shadow: 0 0 24px rgba(200,255,0,0.35); transform: translateY(-1px); }
+  .btn-cv:hover svg { transform: translateY(2px); }
+
+  [data-theme="light"] .btn-cv { color: #ffffff; }
+  [data-theme="light"] .btn-cv:hover { box-shadow: 0 0 24px rgba(59,91,219,0.4); }
+
+  /* ── THEME TOGGLE ── */
+  .theme-toggle {
+    display: flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.3s, border-color 0.3s, transform 0.2s var(--ease-out), background 0.3s;
   }
 
-  .btn-cv:hover {
-    box-shadow: 0 0 24px rgba(200, 255, 0, 0.35);
-    transform: translateY(-1px);
-  }
-
-  .btn-cv:hover svg {
-    transform: translateY(2px);
-  }
-
-  /* Cacher le texte "CV" sur mobile, garder l'icône */
-  @media (max-width: 560px) {
-    .btn-cv span { display: none; }
-    .btn-cv { padding: 7px 10px; }
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: rotate(20deg);
   }
 
   /* ── HAMBURGER ── */
   .hamburger {
     display: none;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 36px;
-    height: 36px;
+    flex-direction: column; justify-content: center;
+    gap: 5px; width: 36px; height: 36px;
     background: transparent;
     border: 1px solid var(--border);
     border-radius: 4px;
-    cursor: none;
+    cursor: pointer !important;
     padding: 8px;
     transition: border-color 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   .hamburger:hover { border-color: rgba(255,255,255,0.2); }
+  [data-theme="light"] .hamburger:hover { border-color: rgba(59,91,219,0.4); }
 
   .hamburger span {
-    display: block;
-    width: 100%;
-    height: 1px;
+    display: block; width: 100%; height: 1px;
     background: var(--text-dim);
     transition: transform 0.3s, opacity 0.3s, background 0.3s;
     transform-origin: center;
+    pointer-events: none;
   }
 
   .hamburger.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); background: var(--accent); }
@@ -186,17 +167,13 @@
 
   /* ── MOBILE MENU ── */
   .mobile-menu {
-    position: fixed;
-    top: 0; right: -100%;
-    width: min(320px, 85vw);
-    height: 100vh;
-    background: #0c0c0c;
+    position: fixed; top: 0; right: -100%;
+    width: min(320px, 85vw); height: 100vh;
+    background: var(--bg2);
     border-left: 1px solid var(--border);
     z-index: 300;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 8px;
+    display: flex; flex-direction: column;
+    justify-content: center; gap: 8px;
     padding: 60px 40px;
     transition: right 0.45s var(--ease-out);
   }
@@ -204,20 +181,16 @@
   .mobile-menu.open { right: 0; }
 
   .mobile-close {
-    position: absolute;
-    top: 24px; right: 24px;
+    position: absolute; top: 24px; right: 24px;
     background: transparent;
     border: 1px solid var(--border);
     color: var(--text-muted);
     font-size: 1rem;
-    width: 36px;
-    height: 36px;
+    width: 36px; height: 36px;
     border-radius: 4px;
-    cursor: none;
+    cursor: pointer;
     transition: color 0.3s, border-color 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
   }
 
   .mobile-close:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
@@ -229,18 +202,22 @@
     text-decoration: none;
     letter-spacing: 0.02em;
     transition: color 0.3s, transform 0.3s;
-    display: block;
-    line-height: 1.1;
+    display: block; line-height: 1.1;
   }
 
   .mobile-link:hover { color: var(--accent); transform: translateX(8px); }
 
+  .mobile-link--cv {
+    font-size: 1.8rem;
+    color: var(--accent) !important;
+    margin-top: 8px; padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
   .mobile-overlay {
-    position: fixed;
-    inset: 0;
+    position: fixed; inset: 0;
     background: rgba(0,0,0,0.7);
-    z-index: 250;
-    opacity: 0;
+    z-index: 250; opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s;
     backdrop-filter: blur(4px);
@@ -250,21 +227,18 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 960px) {
-    .hamburger { display: flex; }
+    .hamburger  { display: flex; }
     .nav-links  { display: none; }
+    .nav-status { display: none; }
   }
 
   @media (max-width: 768px) {
     .nav { padding: 0 24px; }
     .mobile-link { font-size: 2.2rem; }
   }
-}
 
-  /* ── CV dans mobile menu ── */
-  .mobile-link--cv {
-    font-size: 1.8rem;
-    color: var(--accent) !important;
-    margin-top: 8px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
+  @media (max-width: 560px) {
+    .btn-cv span { display: none; }
+    .btn-cv { padding: 7px 10px; }
   }
+}

@@ -199,3 +199,15 @@
     .hero-cta { flex-direction: column; align-items: flex-start; }
   }
 }
+
+  /* ── THEME CLAIR ── */
+  [data-theme="light"] .hero::before {
+    background: radial-gradient(circle, rgba(59,91,219,0.06) 0%, transparent 65%);
+  }
+  [data-theme="light"] .hero::after {
+    background: radial-gradient(circle, rgba(232,93,42,0.05) 0%, transparent 65%);
+  }
+  [data-theme="light"] .scroll-line {
+    background: linear-gradient(to bottom, transparent, var(--accent));
+  }
+  [data-theme="light"] .hero-bg-text { color: rgba(59,91,219,0.04); }

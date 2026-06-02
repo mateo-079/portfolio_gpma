@@ -32,3 +32,6 @@
     .footer-inner { flex-direction: column; text-align: center; }
   }
 }
+
+  /* ── THEME CLAIR ── */
+  [data-theme="light"] .footer { border-top-color: var(--border); }

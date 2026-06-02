@@ -177,3 +177,8 @@
     .contact-grid { gap: 40px; }
   }
 }
+
+  /* ── THEME CLAIR ── */
+  [data-theme="light"] .contact-card { background: #ffffff; border-color: rgba(59,91,219,0.15); }
+  [data-theme="light"] .contact-link:hover { color: var(--accent); }
+  [data-theme="light"] .cc-social:hover { color: var(--accent); border-color: rgba(59,91,219,0.4); }

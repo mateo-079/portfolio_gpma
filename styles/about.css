@@ -129,3 +129,9 @@
     display: inline-block;
     margin-top: 0.18em;
   }
+
+  /* ── THEME CLAIR ── */
+  [data-theme="light"] .skill-fill { background: linear-gradient(to right, var(--accent), rgba(59,91,219,0.5)); }
+  [data-theme="light"] .skill-bar  { background: rgba(59,91,219,0.08); }
+  [data-theme="light"] .stat-num   { color: var(--accent); }
+  [data-theme="light"] .about-stats { border-top-color: var(--border); }

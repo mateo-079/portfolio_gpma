@@ -260,3 +260,42 @@
     .project-number   { display: none; }
   }
 }
+
+  /* ── GLOW HOVER sur les cards ── */
+  .project-card {
+    --glow-x: 50%;
+    --glow-y: 50%;
+    --glow-op: 0;
+    position: relative;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      300px circle at var(--glow-x) var(--glow-y),
+      rgba(200,255,0,0.04),
+      transparent 70%
+    );
+    opacity: var(--glow-op);
+    transition: opacity 0.4s;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  [data-theme="light"] .project-card::before {
+    background: radial-gradient(
+      300px circle at var(--glow-x) var(--glow-y),
+      rgba(59,91,219,0.06),
+      transparent 70%
+    );
+  }
+
+  /* Thème clair — cards */
+  [data-theme="light"] .project-link:hover { background: rgba(59,91,219,0.03); }
+  [data-theme="light"] .project-link:hover .project-number { color: var(--accent); }
+  [data-theme="light"] .project-link:hover .project-title  { color: var(--accent); }
+  [data-theme="light"] .project-link:hover .project-arrow  { border-color: var(--accent); color: var(--accent); }
+  [data-theme="light"] .project-screen { border-color: rgba(59,91,219,0.15); box-shadow: 0 24px 64px rgba(59,91,219,0.08); }
+  [data-theme="light"] .project-link:hover .project-screen { box-shadow: 0 32px 80px rgba(59,91,219,0.15), 0 0 40px rgba(59,91,219,0.06); }

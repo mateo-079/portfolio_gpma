@@ -1,0 +1,62 @@
+/* ===========================
+   theme-toggle.css — Bouton de bascule thème sombre / clair
+   =========================== */
+
+@layer components {
+
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: none;
+    color: var(--text-muted);
+    transition: color 0.3s var(--ease-out),
+                border-color 0.3s var(--ease-out),
+                background 0.3s var(--ease-out);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--hero-tag-bg);
+  }
+
+  /* ── Icônes lune / soleil ── */
+  .theme-toggle svg {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    transition: transform 0.45s var(--ease-spring),
+                opacity   0.35s var(--ease-out);
+  }
+
+  /* État par défaut : thème sombre → lune visible, soleil caché */
+  .icon-sun {
+    transform: scale(0) rotate(-90deg);
+    opacity: 0;
+  }
+
+  .icon-moon {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+
+  /* Thème clair : soleil visible, lune cachée */
+  [data-theme="light"] .icon-sun {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+
+  [data-theme="light"] .icon-moon {
+    transform: scale(0) rotate(90deg);
+    opacity: 0;
+  }
+}
